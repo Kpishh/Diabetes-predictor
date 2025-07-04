@@ -22,7 +22,7 @@ A machine learning-based web application that predicts the likelihood of diabete
 
 ---
 
-## 🛠 Technologies Used
+##  Technologies Used
 
 - **Frontend**: HTML, CSS
 - **Backend**: Python, Flask
