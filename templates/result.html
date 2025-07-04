@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        .result-box {
+            display: inline-block;
+            padding: 20px 40px;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-top: 30px;
+            background-color: #ecf0f1;
+        }
+        .back-button {
+            margin-top: 20px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your Diabetes Prediction</h2>
+    <div class="result-box">
+        {{ prediction_text }}
+    </div>
+    <a href="/" class="back-button">⟵ Try Again</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="result-container">
+        <h2>Your Diabetes Prediction</h2>
+        <div class="result-box">
+            {{ prediction_text }}
+        </div>
+        <a href="/" class="back-button">⟵ Try Again</a>
+    </div>
+</body>
+</html>
