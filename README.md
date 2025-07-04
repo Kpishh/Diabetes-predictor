@@ -1,10 +1,10 @@
-# 🩺 Diabetes Prediction System
+#  Diabetes Prediction System
 
 A machine learning-based web application that predicts the likelihood of diabetes in a patient based on diagnostic inputs. Built using Flask, Scikit-learn, and deployed on Render.
 
 ---
 
-## 📌 Features
+##  Features
 
 - Predicts diabetes based on health metrics using ML models
 - Uses Random Forest Classifier
@@ -13,7 +13,7 @@ A machine learning-based web application that predicts the likelihood of diabete
 
 ---
 
-## 🧠 Machine Learning Pipeline
+##  Machine Learning Pipeline
 
 - **Dataset**: diabetes_prediction_dataset(1).csv (already provided as a file)
 - **Preprocessing**: StandardScaler
@@ -22,7 +22,7 @@ A machine learning-based web application that predicts the likelihood of diabete
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠 Technologies Used
 
 - **Frontend**: HTML, CSS
 - **Backend**: Python, Flask
@@ -31,11 +31,11 @@ A machine learning-based web application that predicts the likelihood of diabete
 
 ---
 
-## 🚀 Deployment (on Render)
+##  Deployment (on Render)
 
-> 🧠 Make sure your `.pkl` files are trained using Python 3.13 to match Render’s default environment.
+>  Make sure your `.pkl` files are trained using Python 3.13 to match Render’s default environment.
 
-### 🔧 Files required:
+###  Files required:
 - `app.py`
 - `model.pkl`
 - `scaler.pkl`
