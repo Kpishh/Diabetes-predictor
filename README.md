@@ -1,21 +1,21 @@
-# 🧠 Diabetes Prediction System
+# Diabetes Prediction System
 
 An intelligent, user-friendly web application that predicts the likelihood of diabetes in a user based on health-related inputs. Built with a question-by-question form flow, the app combines a clean frontend (hosted on Vercel) with a Flask-based machine learning backend (hosted on Render).
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ Predicts diabetes risk using diagnostic inputs like age, gender, BMI, glucose, HbA1c, etc.
-- ✅ Auto-calculates BMI and estimates HbA1c from blood glucose if user doesn't know them
-- ✅ Uses Random Forest Classifier for robust prediction
-- ✅ Question-by-question UX similar to medical assessments
-- ✅ Clean and responsive interface with visual cues
-- ✅ Frontend-backend separation (Vercel + Render)
+- Predicts diabetes risk using diagnostic inputs like age, gender, BMI, glucose, HbA1c, etc.
+- Auto-calculates BMI and estimates HbA1c from blood glucose if user doesn't know them
+- Uses Random Forest Classifier for robust prediction
+- Question-by-question UX similar to medical assessments
+- Clean and responsive interface with visual cues
+- Frontend-backend separation (Vercel + Render)
 
 ---
 
-## 🧠 Machine Learning Pipeline
+## Machine Learning Pipeline
 
 - **Dataset**: `diabetes_prediction_dataset(1).csv`
 - **Preprocessing**: Missing value handling, encoding, `StandardScaler`
@@ -25,7 +25,7 @@ An intelligent, user-friendly web application that predicts the likelihood of di
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 
 | Layer       | Stack                                 |
 |-------------|----------------------------------------|
@@ -37,9 +37,9 @@ An intelligent, user-friendly web application that predicts the likelihood of di
 
 ---
 
-## 🌐 Deployment Instructions
+## Deployment Instructions
 
-### 🔹 Backend (Flask API) on Render
+### Backend (Flask API) on Render
 
 > Push the backend code (including ML model files) to a GitHub repo.
 
