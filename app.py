@@ -23,8 +23,29 @@ def predict():
     heart_disease = int(request.form['heart_disease'])
     smoking_history = request.form['smoking_history']
     bmi = float(request.form['bmi'])
-    hba1c = float(request.form['HbA1c_level'])
-    glucose = float(request.form['blood_glucose_level'])
+    hba1c_raw = request.form.get('HbA1c_level', '').strip()
+
+    if not hba1c_raw:
+        # Field is missing or empty
+        hba1c = None  # or a default like 0.0 if model requires a value
+    else:
+        try:
+            hba1c = float(hba1c_raw)
+        except ValueError:
+            hba1c = None  # or again, set a default or raise an error
+
+    glucose_raw = request.form.get('blood_glucose_level', None)
+
+    if glucose_raw is None or glucose_raw.strip() == "":
+        # Field is missing or empty — handle gracefully
+        glucose = None  # or 0.0 or any default your model can tolerate
+    else:
+        try:
+            glucose = float(glucose_raw)
+        except ValueError:
+            glucose = None  # or handle/log
+
+
 
     # Convert to DataFrame
     raw_input = pd.DataFrame([{
@@ -54,6 +75,11 @@ def predict():
 def result_page():
     result = session.get('prediction', None)
     return render_template('result.html', prediction_text=result)
+
+@app.route('/questions')
+def questions():
+    return render_template('questionnaire.html')
+
 
 
 if __name__ == '__main__':
