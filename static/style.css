@@ -1,126 +1,295 @@
-* {
-    box-sizing: border-box;
-}
-
+/* General reset */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f6f9;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+    background: #f0f4f8;
 }
 
-.container {
-    background: #fff;
-    margin-top: 40px;
+/* === Landing Page === */
+body.landing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.welcome-container {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+}
+
+.welcome-container h1 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.welcome-container p {
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 18px;
+}
+
+.welcome-container button {
+    background: #4ca1af;
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.welcome-container button:hover {
+    background: #417b86;
+}
+
+/* === Questionnaire === */
+.questionnaire-container {
+    max-width: 500px;
+    margin: 60px auto;
+    background: white;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
 }
 
-h2 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 30px;
+.question-slide {
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.question-slide.active {
+    display: block;
 }
 
 label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    font-weight: 600;
     color: #333;
-    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
 }
 
 input, select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px;
+    font-size: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    background: #4ca1af;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 15px;
     transition: 0.3s;
 }
 
-input:focus, select:focus {
-    outline: none;
-    border-color: #4ca1af;
-    box-shadow: 0 0 5px rgba(76, 161, 175, 0.5);
+.navigation-buttons button:hover {
+    background: #417b86;
 }
 
-button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 12px;
-    font-size: 16px;
-    background-color: #4ca1af;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+body.landing {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button:hover {
-    background-color: #417b86;
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    width: 90%;
+    background: #ffffff;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
-.result {
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #e8f5e9;
-    border-left: 6px solid #4caf50;
-    color: #2e7d32;
-    border-radius: 6px;
-    font-weight: bold;
-    text-align: center;
+.hero-content {
+    flex: 1;
+    padding-right: 40px;
 }
 
-/* === Result Page Container === */
-.result-container {
-    background: #fff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-}
-
-/* === Heading === */
-.result-container h2 {
+.hero-content h1 {
+    font-size: 38px;
     color: #2c3e50;
     margin-bottom: 20px;
 }
 
-/* === Result Box === */
+.hero-content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.hero-content button {
+    padding: 14px 30px;
+    background: #4ca1af;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.hero-content button:hover {
+    background: #417b86;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.result-body {
+    background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.result-card {
+    background: white;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.result-card h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-size: 26px;
+}
+
+/* Reuse old .result-box but limit width */
 .result-box {
     padding: 20px;
-    background-color: #e8f5e9;
-    border-left: 6px solid #4caf50;
-    color: #2e7d32;
     font-size: 22px;
     border-radius: 8px;
     font-weight: bold;
     margin-bottom: 25px;
 }
 
-/* === Back Button === */
+/* Diabetic = red */
+.result-box.diabetic {
+    background-color: #fdecea;
+    border-left: 6px solid #e53935;
+    color: #b71c1c;
+}
+
+/* Not Diabetic = green */
+.result-box.not-diabetic {
+    background-color: #e8f5e9;
+    border-left: 6px solid #4caf50;
+    color: #2e7d32;
+}
+
 .back-button {
-    text-decoration: none;
     display: inline-block;
+    padding: 12px 24px;
     background-color: #4ca1af;
     color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-size: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 .back-button:hover {
     background-color: #417b86;
 }
+
+/*new*/
+.question-slide {
+    display: none;
+    transition: all 0.4s ease;
+}
+
+.question-slide.active {
+    display: block;
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    gap: 30px;
+}
+
+.slide-image {
+    flex: 1;
+    text-align: center;
+}
+
+.slide-image img {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.slide-question {
+    flex: 2;
+}
+
+.slide-question label {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.slide-question input,
+.slide-question select {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+
+
