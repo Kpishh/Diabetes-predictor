@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Risk Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="questionnaire-container">
+        <form id="quizForm" method="POST" action="/predict">
+            <div class="question-slide active">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/equality.png') }}" alt="Gender">
+                    </div>
+                    <div class="slide-question">
+                        <label>What is your gender?</label>
+                        <select name="gender" required>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-slide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/age-range.png') }}" alt="Age">
+                    </div>
+                    <div class="slide-question">
+                        <label>How old are you?</label>
+                        <input type="number" name="age" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-slide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/healthy.png') }}" alt="Hypertension">
+                    </div>
+                    <div class="slide-question">
+                        <label>Do you currently take or have you ever taken medications for hypertension ?</label>
+                        <select name="hypertension" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="question-slide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/medical.png') }}" alt="Heart Disease">
+                    </div>
+                    <div class="slide-question">
+                        <label>Do you currently take or have you ever taken medications for heart disease ?</label>
+                        <select name="heart_disease" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="question-slide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/smoking.png') }}" alt="Smoking History">
+                    </div>
+                    <div class="slide-question">
+                        <label>What best describes your smoking history?</label>
+                        <select name="smoking_history" required>
+                            <option value="never">Never</option>
+                            <option value="current">Current</option>
+                            <option value="former">Former</option>
+                            <option value="No Info">Prefer not to disclose</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="question-slide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/bmi.png') }}" alt="BMI">
+                    </div>
+                    <div class="slide-question">
+                        <label>Do you know your Body Mass Index (BMI)?</label>
+                        <select id="bmiChoice" onchange="toggleBMIInputs()" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="yes">Yes, I know my BMI</option>
+                            <option value="no">No, I want to calculate it</option>
+                        </select>
+
+                        <div id="bmiDirectInput" style="display:none; margin-top:15px;">
+                            <label>Enter your BMI:</label>
+                            <input type="number" name="bmi" id="bmiInput" step="any">
+                        </div>
+
+                        <div id="bmiCalcInput" style="display:none; margin-top:15px;">
+                            <label>Enter your height (in cm):</label>
+                            <input type="number" id="heightInput" step="any">
+
+                            <label>Enter your weight (in kg):</label>
+                            <input type="number" id="weightInput" step="any" oninput="calculateBMI()">
+
+                            <p id="calculatedBMIText" style="margin-top:10px; font-weight:bold;"></p>
+
+                            <!-- Hidden BMI field that will be submitted -->
+                            <input type="hidden" name="bmi" id="calculatedBMI">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="question-slide">
+            <div class="slide-content">
+                <div class="slide-image">
+                    <img src="{{ url_for('static', filename='img/glucose-meter.png') }}" alt="HbA1c">
+                </div>
+                <div class="slide-question">
+                    <label>Do you know your recent HbA1c (%) level?</label>
+                    <select id="hba1cChoice" onchange="toggleHbA1cInputs()" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="yes">Yes, I know it</option>
+                        <option value="no">No, estimate it using my blood glucose</option>
+                    </select>
+
+                    <!-- HbA1c direct input -->
+                    <div id="hba1cDirectInput" style="display:none; margin-top:15px;">
+                        <label>Enter your HbA1c (%):</label>
+                        <input type="number" name="HbA1c_level" id="hba1cInput" step="any">
+                    </div>
+
+                    <!-- Estimation based on glucose -->
+                    <div id="hba1cEstimateInput" style="display:none; margin-top:15px;">
+                        <label>Enter your blood glucose level (mg/dL):</label>
+                        <input type="number" id="glucoseForHbA1c" step="any" oninput="estimateHbA1c()">
+
+                        <p id="estimatedHbA1cText" style="margin-top:10px; font-weight:bold;"></p>
+
+                        <!-- Hidden HbA1c value that gets submitted -->
+                        <input type="hidden" name="HbA1c_level" id="estimatedHbA1c">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="question-slide" id="glucoseSlide">
+                <div class="slide-content">
+                    <div class="slide-image">
+                        <img src="{{ url_for('static', filename='img/sugar-blood-level.png') }}" alt="Blood Glucose">
+                    </div>
+                    <div class="slide-question">
+                        <label>What is your blood glucose level (mg/dL)?</label>
+                        <input type="number" name="blood_glucose_level" step="any" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="navigation-buttons">
+                <button type="button" id="prevBtn">⟵ Previous</button>
+                <button type="button" id="nextBtn">Next ⟶</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
